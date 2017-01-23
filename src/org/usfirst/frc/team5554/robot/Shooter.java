@@ -4,12 +4,14 @@ import edu.wpi.first.wpilibj.Victor;
 
 public class Shooter 
 {
-	private Victor shooter;
+	private Victor firstShooter;
+	private Victor secondShooter;
 	private Victor feeder;
 	
-	public Shooter(int shooterPort, int feederPort)
+	public Shooter(int shooterFirstPort,int shooterSecondPort, int feederPort)
 	{
-		shooter = new Victor(shooterPort);
+		firstShooter = new Victor(shooterFirstPort);
+		secondShooter = new Victor(shooterSecondPort);
 		feeder = new Victor(feederPort);
 	}
 	
@@ -17,11 +19,13 @@ public class Shooter
 	{
 		if(toShoot)
 		{
-			shooter.set(0.7);
+			firstShooter.set(0.7);
+			secondShooter.set(-0.7);
 		}
 		else
 		{
-			shooter.set(0);
+			firstShooter.set(0);
+			secondShooter.set(0);
 		}
 	}
 	

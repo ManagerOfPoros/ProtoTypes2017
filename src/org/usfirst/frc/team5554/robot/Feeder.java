@@ -11,13 +11,16 @@ public class Feeder {
 		feeder = new Victor(feederPort);
 	}
 	
-	public void feed()
+	public void feed(boolean toFeed)
 	{
-		feeder.set(0.8);
+		if(toFeed)
+		{
+			feeder.set(-0.8);
+		}
+		else
+		{
+			feeder.set(0);
+		}
 	}
 	
-	public void stopFeed() // if not instructed, the feeder will continue to move
-	{ 
-		feeder.set(0);
-	}
 }
