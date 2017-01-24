@@ -15,6 +15,7 @@ public class Shooter
 		feeder = new Victor(feederPort);
 	}
 	
+	//shooter
 	public void shoot(boolean toShoot)
 	{
 		if(toShoot)
