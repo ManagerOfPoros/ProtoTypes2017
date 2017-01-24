@@ -19,8 +19,8 @@ public class Shooter
 	{
 		if(toShoot)
 		{
-			firstShooter.set(0.7);
-			secondShooter.set(-0.7);
+			firstShooter.set(1);
+			secondShooter.set(-1);
 		}
 		else
 		{

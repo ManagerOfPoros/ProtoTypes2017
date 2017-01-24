@@ -45,10 +45,18 @@ public class Driver
 		if (powerRight > 1)powerRight=1;
 		if (powerRight < -1)powerRight=-1;
 		
-		this.left.set(-powerLeft+(powerLeft/2));
+		if(y<0)
+		{
+		this.left.set(-powerLeft+(powerLeft/3));
 		this.right.set(powerRight);
+		}
+		else if(y>0)
+		{
+			this.left.set(-powerLeft+(powerLeft/1.5));
+			this.right.set(powerRight);
+		}
+	}
 		//this.omni.set(x*(slider));  
 		
 		
-	}
 }
