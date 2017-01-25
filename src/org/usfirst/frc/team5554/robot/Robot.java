@@ -12,6 +12,11 @@ public class Robot extends IterativeRobot {
 	
 	private Joystick joy;
 	
+	/******************************************flags*******************************************/
+	private boolean ignoreIncreaseSwitch = false;
+	private boolean ignoreDecreaseSwitch = false;
+	/******************************************************************************************/
+	
 	@Override
 	public void robotInit() 
 	{
@@ -46,6 +51,38 @@ public class Robot extends IterativeRobot {
 		/****************************************** Feeder *********************************************/
 		
 		feeder.feed(joy.getRawButton(2));
+		
+		//increase speed button
+    	if(joy.getRawButton(3) && ignoreIncreaseSwitch == false)
+    	{
+			ignoreIncreaseSwitch = true;
+			
+    		if(shooter.getSpeed() != 1)
+    			shooter.setSpeed(shooter.getSpeed()+0.05);
+    	}
+    	else if(!joy.getRawButton(3))
+    	{
+    		ignoreIncreaseSwitch = false;
+    	}
+    	
+		//decrease speed button
+    	if(joy.getRawButton(4) && ignoreDecreaseSwitch == false)
+    	{
+    		ignoreDecreaseSwitch = true;
+    		
+    		if(shooter.getSpeed() != 0)
+    			shooter.setSpeed(shooter.getSpeed()-0.05);
+
+    	}
+    	else if(!joy.getRawButton(4))
+    	{
+    		ignoreDecreaseSwitch = false;
+    	}
+    	
+    	/*********************************************************************************************/
+    	
+    	
+    	
 
 		
 	}

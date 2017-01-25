@@ -8,6 +8,8 @@ public class Shooter
 	private Victor secondShooter;
 	private Victor feeder;
 	
+	private double speed = 0.5;
+	
 	public Shooter(int shooterFirstPort,int shooterSecondPort, int feederPort)
 	{
 		firstShooter = new Victor(shooterFirstPort);
@@ -20,8 +22,8 @@ public class Shooter
 	{
 		if(toShoot)
 		{
-			firstShooter.set(1);
-			secondShooter.set(-1);
+			firstShooter.set(speed);
+			secondShooter.set(-speed);
 		}
 		else
 		{
@@ -40,6 +42,16 @@ public class Shooter
 		{
 			feeder.set(0);
 		}
+	}
+	
+	public void setSpeed(double speed)
+	{
+		this.speed = speed;
+	}
+	
+	public double getSpeed()
+	{
+		return this.speed;
 	}
 	
 
