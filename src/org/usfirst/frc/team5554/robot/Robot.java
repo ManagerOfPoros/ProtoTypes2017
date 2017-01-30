@@ -12,6 +12,8 @@ public class Robot extends IterativeRobot {
 	
 	private Joystick joy;
 	
+	//private Ultrasonic ultrasonic; 
+	
 	/******************************************flags*******************************************/
 	private boolean ignoreIncreaseSwitch = false;
 	private boolean ignoreDecreaseSwitch = false;
@@ -20,10 +22,17 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() 
 	{
+		
 		driver = new Driver(RobotMap.MOTOR_LEFT , RobotMap.MOTOR_RIGHT );
+		
 		shooter = new Shooter(RobotMap.MOTOR_SHOOT_ONE,RobotMap.MOTOR_SHOOT_TWO, RobotMap.MOTOR_SHOOTER_FEEDER);
+		
 		feeder = new Feeder(RobotMap.MOTOR_FEEDER);
+		
 		joy = new Joystick(0);
+		
+		//ultrasonic = new Ultrasonic(0);         
+		
 	}
 
 	@Override
@@ -57,8 +66,10 @@ public class Robot extends IterativeRobot {
     	{
 			ignoreIncreaseSwitch = true;
 			
-    		if(shooter.getSpeed() != 1)
+    		if(shooter.getSpeed() <= 1)
+    		{
     			shooter.setSpeed(shooter.getSpeed()+0.05);
+    		}
     	}
     	else if(!joy.getRawButton(3))
     	{
@@ -70,8 +81,10 @@ public class Robot extends IterativeRobot {
     	{
     		ignoreDecreaseSwitch = true;
     		
-    		if(shooter.getSpeed() != 0)
+    		if(shooter.getSpeed() >= 0)
+    		{
     			shooter.setSpeed(shooter.getSpeed()-0.05);
+    		}
 
     	}
     	else if(!joy.getRawButton(4))
@@ -80,8 +93,7 @@ public class Robot extends IterativeRobot {
     	}
     	
     	/*********************************************************************************************/
-    	
-    	
+    	//System.out.println(ultrasonic.getRangeCm());
     	
 
 		

@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5554.robot;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.Victor;
 
 public class Shooter 
@@ -22,8 +23,10 @@ public class Shooter
 	{
 		if(toShoot)
 		{
-			firstShooter.set(speed);
-			secondShooter.set(-speed);
+			firstShooter.set(-speed);
+			secondShooter.set(speed);
+			
+			System.out.println(speed);
 		}
 		else
 		{
