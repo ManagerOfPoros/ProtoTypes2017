@@ -1,6 +1,5 @@
 package org.usfirst.frc.team5554.robot;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.Victor;
 
 public class Shooter 
@@ -56,6 +55,4 @@ public class Shooter
 	{
 		return this.speed;
 	}
-	
-
 }
