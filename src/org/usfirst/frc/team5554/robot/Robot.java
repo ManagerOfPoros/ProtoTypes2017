@@ -9,10 +9,10 @@ public class Robot extends IterativeRobot {
 	private Driver driver;
 	private Shooter shooter;
 	private Feeder feeder;
+	private GearHolder gears;
+	private CameraThread streamer;
 	
 	private Joystick joy;
-	
-	//private Ultrasonic ultrasonic; 
 	
 	/******************************************flags*******************************************/
 	private boolean ignoreIncreaseSwitch = false;
@@ -29,9 +29,13 @@ public class Robot extends IterativeRobot {
 		
 		feeder = new Feeder(RobotMap.MOTOR_FEEDER);
 		
-		joy = new Joystick(0);
+		gears = new GearHolder(0,2,4);
+		gears.SetLeds(true);
 		
-		//ultrasonic = new Ultrasonic(0);         
+		joy = new Joystick(0);  
+		
+		streamer = new CameraThread(joy);
+		streamer.start();
 		
 	}
 
@@ -44,10 +48,17 @@ public class Robot extends IterativeRobot {
 	public void autonomousPeriodic() {
 
 	}
+	
+	@Override
+	public void teleopInit()
+	{
+		streamer.toSwitch = true;
+	}
 
 	@Override
 	public void teleopPeriodic() 
 	{
+		
 		/****************************************** Driving *********************************************/
 		
 		driver.Moving(joy.getRawAxis(1), joy.getRawAxis(2), joy.getRawAxis(3));
@@ -57,11 +68,7 @@ public class Robot extends IterativeRobot {
 		shooter.shoot(joy.getRawButton(1));
 		shooter.feed(joy.getRawButton(9));
 		
-		/****************************************** Feeder *********************************************/
-		
-		feeder.feed(joy.getRawButton(2));
-		
-		//increase speed button
+		//increase speed button   // for tests 
     	if(joy.getRawButton(3) && ignoreIncreaseSwitch == false)
     	{
 			ignoreIncreaseSwitch = true;
@@ -92,11 +99,21 @@ public class Robot extends IterativeRobot {
     		ignoreDecreaseSwitch = false;
     	}
     	
-    	/*********************************************************************************************/
-    	//System.out.println(ultrasonic.getRangeCm());
-    	
-
+		/****************************************** Feeder *********************************************/
 		
+		feeder.feed(joy.getRawButton(2));
+    	
+    	/***************************************** Gear Holder *****************************************/
+
+		gears.isGearIn();
+    	
+		
+	}
+	
+	@Override
+	public void disabledPeriodic()
+	{
+		streamer.toSwitch = false;
 	}
 
 	@Override

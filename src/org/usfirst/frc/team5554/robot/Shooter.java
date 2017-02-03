@@ -45,6 +45,7 @@ public class Shooter
 			feeder.set(0);
 		}
 	}
+	/*methods that benefit us in tests on the shooter*/
 	
 	public void setSpeed(double speed)
 	{
