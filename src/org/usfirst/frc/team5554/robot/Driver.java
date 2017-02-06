@@ -5,9 +5,10 @@ import edu.wpi.first.wpilibj.Victor;
 
 public class Driver
 {
-	private Talon left;
-	private Victor right;
-	//private Victor omni;
+	private Victor left0;
+	private Victor left1;
+	private Victor right0;
+	private Victor right1;
 	
 	/**
 	 * The constructor configurates the motors objects to certain ports
@@ -16,12 +17,13 @@ public class Driver
 	 * @param MOTOR_RIGHT port for right motor
 	 * Author: Gil Meri
 	 */
-	public Driver(int MOTOR_LEFT, int MOTOR_RIGHT) //int OMNI
+	public Driver(int motorLeftOne , int motorLeftTwo , int motorRightOne , int motorRightTwo) 
 	{
 		
-		left = new Talon(MOTOR_LEFT);
-		right = new Victor(MOTOR_RIGHT);
-		//omni = new Victor(OMNI);
+		left0 = new Victor(motorLeftOne);
+		left1 = new Victor(motorLeftTwo);
+		right0 = new Victor(motorRightOne);
+		right1 = new Victor(motorRightTwo);
 		
 	}
 	
@@ -33,7 +35,7 @@ public class Driver
 	 * @param slider The value of the joystick's slider axis
 	 * Author: Gil Meri
 	 */
-	public void Moving (double y, double z, double slider) //double x
+	public void Moving (double y, double z, double slider) 
 	{
 		slider = (-slider+1)/2;
 		
@@ -45,18 +47,11 @@ public class Driver
 		if (powerRight > 1)powerRight=1;
 		if (powerRight < -1)powerRight=-1;
 		
-		if(y<0)
-		{
-		this.left.set(-powerLeft+(powerLeft/3));
-		this.right.set(powerRight);
-		}
-		else if(y>0)
-		{
-			this.left.set(-powerLeft+(powerLeft/1.5));
-			this.right.set(powerRight);
-		}
+		this.left0.set(-powerLeft);
+		this.left1.set(-powerLeft);
+		this.right0.set(powerRight);
+		this.right1.set(powerRight);
 	}
-		//this.omni.set(x*(slider));  
 		
 		
 }

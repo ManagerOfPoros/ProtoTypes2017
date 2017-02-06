@@ -8,7 +8,7 @@ public class Shooter
 	private Victor secondShooter;
 	private Victor feeder;
 	
-	private double speed = 0.5;
+	private double speed = 0.7;
 	
 	public Shooter(int shooterFirstPort,int shooterSecondPort, int feederPort)
 	{
