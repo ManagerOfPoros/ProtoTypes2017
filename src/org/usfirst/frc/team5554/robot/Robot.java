@@ -1,5 +1,8 @@
 package org.usfirst.frc.team5554.robot;
 
+import org.usfirst.frc.team5554.robot.Commands.Autonomous_One;
+import org.usfirst.frc.team5554.robot.Commands.DriveDistance;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
@@ -24,6 +27,7 @@ public class Robot extends IterativeRobot {
 	/*****************************************Autonomous******************************************/
 	Command autonomousCommand;
 	SendableChooser autoChooser;
+	/********************************************************************************************/
 	
 	
 	
@@ -33,7 +37,7 @@ public class Robot extends IterativeRobot {
 		
 		driver = new Driver(RobotMap.MOTOR_LEFT_ONE , RobotMap.MOTOR_LEFT_TWO, RobotMap.MOTOR_RIGHT_ONE, RobotMap.MOTOR_RIGHT_TWO );
 		
-		shooter = new Shooter(RobotMap.MOTOR_SHOOT_ONE,RobotMap.MOTOR_SHOOT_TWO, 6);
+		shooter = new Shooter(RobotMap.MOTOR_SHOOT_ONE,RobotMap.MOTOR_SHOOT_TWO,3,4);
 		
 		//feeder = new Feeder(RobotMap.MOTOR_FEEDER);
 		
@@ -45,10 +49,11 @@ public class Robot extends IterativeRobot {
 		streamer = new CameraThread(joy);
 		streamer.start();
 		
-		//autoChooser = new SendableChooser();
-		//autoChooser.addDefault("Default", Autonomous.Deafult);
-		//autoChooser.addObject("Shooter", Autonomous.Shooter);
-		//SmartDashboard.putData("Autonomous mode chooser", autoChooser);
+		/***********************************Autonomous Options***********************************************/
+		autoChooser = new SendableChooser();
+		autoChooser.addDefault("Default", new DriveDistance());
+		autoChooser.addObject("Drive", new Autonomous_One());
+		SmartDashboard.putData("Autonomous" , autoChooser);
 		
 	}
 
@@ -82,7 +87,6 @@ public class Robot extends IterativeRobot {
 		/****************************************** Shooter *********************************************/
 		
 		shooter.shoot(joy.getRawButton(1));
-		shooter.feed(joy.getRawButton(9));
 		
 		//increase speed button   // for tests 
     	if(joy.getRawButton(3) && ignoreIncreaseSwitch == false)
@@ -133,7 +137,9 @@ public class Robot extends IterativeRobot {
 	}
 
 	@Override
-	public void testPeriodic() {
+	public void testPeriodic() 
+	{
 	}
+	
 }
 

@@ -1,20 +1,30 @@
 package org.usfirst.frc.team5554.robot;
 
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Victor;
 
 public class Shooter 
 {
 	private Victor firstShooter;
 	private Victor secondShooter;
-	private Victor feeder;
 	
-	private double speed = 0.7;
+	private double speed = 0.45;
 	
-	public Shooter(int shooterFirstPort,int shooterSecondPort, int feederPort)
+	private Encoder upperEncoder;
+	
+	public Shooter(int shooterFirstPort, int shooterSecondPort, int upperEncoderPort, int lowwerEncoderPort)
 	{
 		firstShooter = new Victor(shooterFirstPort);
 		secondShooter = new Victor(shooterSecondPort);
-		feeder = new Victor(feederPort);
+		upperEncoder = new Encoder(7, 8, false, Encoder.EncodingType.k4X);  
+		
+//		upperEncoder.setMaxPeriod(.1);
+//		upperEncoder.setMinRate(10);
+//		upperEncoder.setReverseDirection(true);
+//		upperEncoder.setDistancePerPulse(5);
+//		upperEncoder.setSamplesToAverage(7);
+		upperEncoder.reset();
 	}
 	
 	//shooter
@@ -22,29 +32,19 @@ public class Shooter
 	{
 		if(toShoot)
 		{
-			firstShooter.set(-speed);
+			//firstShooter.set(speed);
 			secondShooter.set(speed);
+			System.out.println(upperEncoder.get());
 			
-			System.out.println(speed);
+
 		}
 		else
 		{
-			firstShooter.set(0);
+			//firstShooter.set(0);
 			secondShooter.set(0);
 		}
 	}
 	
-	public void feed(boolean toFeed)
-	{
-		if(toFeed)
-		{
-			feeder.set(-0.7);
-		}
-		else
-		{
-			feeder.set(0);
-		}
-	}
 	/*methods that benefit us in tests on the shooter*/
 	
 	public void setSpeed(double speed)
@@ -55,5 +55,10 @@ public class Shooter
 	public double getSpeed()
 	{
 		return this.speed;
+	}
+	
+	public void autoShoot()
+	{
+		
 	}
 }

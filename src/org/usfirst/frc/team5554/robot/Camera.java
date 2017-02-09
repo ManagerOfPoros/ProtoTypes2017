@@ -13,23 +13,34 @@ public class Camera extends Thread
 	private Mat mat = new Mat();
 	private CvSink cvSink;	
 	
-	public Camera(int cameraPort , int resWidth, int resHeight)
+	private boolean enabled = false;
+	
+	public Camera(int cameraPort , int resWidth, int resHeight , int fps)
 	{
 		this.cameraPort = cameraPort;
 		camera = CameraServer.getInstance().startAutomaticCapture(this.cameraPort);
 		camera.setResolution(resWidth, resHeight);
+		camera.setFPS(fps);
 		cvSink = CameraServer.getInstance().getVideo(camera);
+		cvSink.setEnabled(enabled);
 	}
 	
 	
 	public Mat getFeed()
 	{
 			cvSink.grabFrame(mat);
-			return mat;		
+			return mat;
 	}
 	
-	public UsbCamera GetCamera()
+	
+	public void SetStream(boolean enabled)
 	{
-		return camera;
+		this.enabled = enabled;
+		cvSink.setEnabled(enabled);
+	}
+	
+	public boolean GetEnabled()
+	{
+		return enabled;
 	}
 }

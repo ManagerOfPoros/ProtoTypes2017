@@ -8,8 +8,8 @@ public enum RobotMap {;
       final static int MOTOR_RIGHT_ONE = 2;
       final static int MOTOR_RIGHT_TWO = 3;
       //final static int MOTOR_FEEDER = 8;
-      final static int MOTOR_SHOOT_ONE = 4;
-      final static int MOTOR_SHOOT_TWO = 5;
+      final static int MOTOR_SHOOT_ONE = 8;
+      final static int MOTOR_SHOOT_TWO = 9;
       //final static int MOTOR_SHOOTER_FEEDER = 9;
       
 

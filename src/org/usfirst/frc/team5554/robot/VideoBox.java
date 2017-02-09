@@ -1,6 +1,9 @@
 package org.usfirst.frc.team5554.robot;
 
 import org.opencv.core.Mat;
+import org.opencv.core.Point;
+import org.opencv.core.Scalar;
+import org.opencv.imgproc.Imgproc;
 
 import edu.wpi.cscore.CvSource;
 import edu.wpi.first.wpilibj.CameraServer;
@@ -20,5 +23,10 @@ public class VideoBox
 		outputStream.putFrame(feed);
 	}
 	
+	public Mat DrawRec(Mat mat , Point leftUp , Point rightDown, Scalar rbg, int thickness)
+	{
+		Imgproc.rectangle(mat, leftUp, rightDown, rbg, thickness);
+		return mat;
+	}
 
 }
