@@ -1,24 +1,30 @@
 package org.usfirst.frc.team5554.robot.Commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc.team5554.robot.Driver;
 
 public class DriveDistance extends Command
 {
-
-	public DriveDistance()
+	int valuefromencoder;
+	int wantedValue;
+	double speed;
+	
+	public DriveDistance(int _wantedValue)
 	{
-		super("DriveDistance");
+		super("Drive Distance");
+		wantedValue = _wantedValue;
 	}
 	
 	@Override
 	public void initialize()
 	{		
-		//while(valuefromencoder != wanted value)
-		//{
-		//	driver.drive(speed);
-		//}
-		//
-		//
+
+		while(valuefromencoder != wantedValue)
+		{
+			Driver.Drive(speed);
+		}
+		
+		
 		System.out.println("We drove the distance");
 	}
 	

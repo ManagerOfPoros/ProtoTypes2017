@@ -1,6 +1,5 @@
 package org.usfirst.frc.team5554.robot;
 
-import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Victor;
 
 public class Driver
@@ -51,6 +50,19 @@ public class Driver
 		this.left1.set(-powerLeft);
 		this.right0.set(powerRight);
 		this.right1.set(powerRight);
+	}
+	
+	public static void Drive(double speed){
+		//here it will start the motors for the driver given a speed
+	}
+	
+	public static void Spin(double degrees){
+		if(degrees > 0){
+			//then spin right
+		}else if(degrees < 0){
+			degrees *= -1;
+			//then spin left
+		}
 	}
 		
 		

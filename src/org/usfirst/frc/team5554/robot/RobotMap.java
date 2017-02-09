@@ -2,15 +2,26 @@ package org.usfirst.frc.team5554.robot;
 
 public enum RobotMap {;
 
-
-      final static int MOTOR_LEFT_ONE = 0;
-      final static int MOTOR_LEFT_TWO = 1;
-      final static int MOTOR_RIGHT_ONE = 2;
-      final static int MOTOR_RIGHT_TWO = 3;
-      //final static int MOTOR_FEEDER = 8;
-      final static int MOTOR_SHOOT_ONE = 8;
-      final static int MOTOR_SHOOT_TWO = 9;
-      //final static int MOTOR_SHOOTER_FEEDER = 9;
-      
-
+/*******************Motor Ports**************************************************************************/
+      public final static int MOTOR_LEFT_ONE = 0;
+      public final static int MOTOR_LEFT_TWO = 1;
+      public final static int MOTOR_RIGHT_ONE = 2;
+      public final static int MOTOR_RIGHT_TWO = 3;
+      //public final static int MOTOR_FEEDER = 8;
+      public final static int MOTOR_SHOOT_ONE = 8;
+      public final static int MOTOR_SHOOT_TWO = 9;
+      //public final static int MOTOR_SHOOTER_FEEDER = 9;
+/*******************Field & Robot Distances In Centimeters***********************************************/
+      public final static int DISTANCE_TO_AIRSHIP_FROM_MIDDLE = 0; //TODO: Add a real measured value!
+      public final static int DISTANCE_TO_AIRSHIP_FROM_SIDE = 0; //TODO: Add a real measured value!
+      public final static int DISTANCE_TO_BASELINE_FROM_START = 0; //TODO: Add a real measured value!
+      public final static int DISTANCE_TO_AIRSHIP_FROM_BASELINE = 0; //TODO: Add a real measured value!
+      public final static int DISTANCE_TO_HOPPER_FROM_BASELINE = 0; //TODO: Add a real measured value!
+      public final static int ROBOT_WIDTH = 101; //Centimeters
+      public final static int ROBOT_LENGTH = 91; //Centimeters
+      public final static int ROBOT_HEIGHT = 60; //Centimeters
+/*******************Constant Turning Angles In Degrees***************************************************/
+      public final static int DEGREES_TO_TURN_FROM_CORNER_TO_SHOOT = 0; //TODO: Add a real measured value!
+      public final static int DEGREES_TO_TURN_TO_AIRSHIP = 0; //TODO: Add a real measured value!
+ 
 }

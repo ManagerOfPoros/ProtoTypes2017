@@ -1,7 +1,6 @@
 package org.usfirst.frc.team5554.robot;
 
-import org.usfirst.frc.team5554.robot.Commands.Autonomous_One;
-import org.usfirst.frc.team5554.robot.Commands.DriveDistance;
+import org.usfirst.frc.team5554.robot.Commands.*;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
@@ -16,7 +15,9 @@ public class Robot extends IterativeRobot {
 	/****************************************objects*******************************************/
 	private Driver driver;
 	private Shooter shooter;
+	@SuppressWarnings("unused")
 	private Feeder feeder;
+	@SuppressWarnings("unused")
 	private GearHolder gears;
 	private CameraThread streamer;
 	/****************************************Joysticks******************************************/
@@ -26,7 +27,7 @@ public class Robot extends IterativeRobot {
 	private boolean ignoreDecreaseSwitch = false;
 	/*****************************************Autonomous******************************************/
 	Command autonomousCommand;
-	SendableChooser autoChooser;
+	SendableChooser<Command> autoChooser;
 	/********************************************************************************************/
 	
 	
@@ -50,11 +51,12 @@ public class Robot extends IterativeRobot {
 		streamer.start();
 		
 		/***********************************Autonomous Options***********************************************/
-		autoChooser = new SendableChooser();
-		autoChooser.addDefault("Default", new DriveDistance());
-		autoChooser.addObject("Drive", new Autonomous_One());
+		autoChooser = new SendableChooser<Command>();
+		autoChooser.addDefault("Empty", new Autonomous_Empty());
+		autoChooser.addObject("A1", new Autonomous_A1());
 		SmartDashboard.putData("Autonomous" , autoChooser);
-		
+		/****************************************************************************************************/
+	
 	}
 
 	@Override
