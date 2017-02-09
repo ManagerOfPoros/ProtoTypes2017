@@ -21,7 +21,7 @@ public enum RobotMap {;
       public final static int ROBOT_LENGTH = 91; //Centimeters
       public final static int ROBOT_HEIGHT = 60; //Centimeters
 /*******************Constant Turning Angles In Degrees***************************************************/
-      public final static int DEGREES_TO_TURN_FROM_CORNER_TO_SHOOT = 0; //TODO: Add a real measured value!
+      public final static int DEGREES_TO_TURN_FROM_SIDES_TO_SHOOT = 0; //TODO: Add a real measured value!
       public final static int DEGREES_TO_TURN_TO_AIRSHIP = 0; //TODO: Add a real measured value!
  
 }

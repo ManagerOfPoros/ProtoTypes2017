@@ -52,17 +52,26 @@ public class Driver
 		this.right1.set(powerRight);
 	}
 	
-	public static void Drive(double speed){
+	public static void Drive(double speed)
+	{
 		//here it will start the motors for the driver given a speed
+		//to drive an exact distance
 	}
 	
-	public static void Spin(double degrees){
+	public static void Spin(double degrees)
+	{
 		if(degrees > 0){
 			//then spin right
 		}else if(degrees < 0){
 			degrees *= -1;
 			//then spin left
 		}
+	}
+	
+	public static void ReleaseGear()
+	{
+		//Drive backwards for a second after 
+		//the gear was taken from the robot
 	}
 		
 		

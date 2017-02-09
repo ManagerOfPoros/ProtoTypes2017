@@ -8,7 +8,11 @@ public class Autonomous_A1 extends CommandGroup
 {
 	public Autonomous_A1()
 	{
-		addSequential(new DriveDistance(RobotMap.DISTANCE_TO_BASELINE_FROM_START + RobotMap.ROBOT_WIDTH));
-		addSequential(new AutoShoot());
+		addSequential(new DriveDistance(RobotMap.DISTANCE_TO_BASELINE_FROM_START + RobotMap.ROBOT_LENGTH));
+		addSequential(new AutoSpin(-RobotMap.DEGREES_TO_TURN_TO_AIRSHIP));
+		addSequential(new PlaceGear());
+		addSequential(new AutoSpin(RobotMap.DEGREES_TO_TURN_TO_AIRSHIP));
+		addSequential(new DriveDistance(RobotMap.DISTANCE_TO_HOPPER_FROM_BASELINE));
+		
 	}
 }

@@ -10,12 +10,11 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class Autonomous_C1 extends CommandGroup {
 
     public Autonomous_C1() {
-    	addSequential(new DriveDistance(RobotMap.DISTANCE_TO_BASELINE_FROM_START + RobotMap.ROBOT_WIDTH));
+    	addSequential(new DriveDistance(RobotMap.DISTANCE_TO_BASELINE_FROM_START + RobotMap.ROBOT_LENGTH));
     	addSequential(new AutoSpin(RobotMap.DEGREES_TO_TURN_TO_AIRSHIP));
     	addSequential(new DriveDistance(RobotMap.DISTANCE_TO_AIRSHIP_FROM_BASELINE));
     	addSequential(new PlaceGear());
     	addSequential(new AutoSpin(180));
-    	addSequential(new AutoShoot());
-    	
+    	addSequential(new AutoShoot()); 	
     }
 }
