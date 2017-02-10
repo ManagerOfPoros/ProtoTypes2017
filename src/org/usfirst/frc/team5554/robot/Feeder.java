@@ -15,7 +15,7 @@ public class Feeder {
 	{
 		if(toFeed)
 		{
-			feeder.set(-0.8);
+			feeder.set(0.8);
 		}
 		else
 		{

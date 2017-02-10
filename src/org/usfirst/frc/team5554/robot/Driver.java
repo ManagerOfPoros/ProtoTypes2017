@@ -38,16 +38,16 @@ public class Driver
 	{
 		slider = (-slider+1)/2;
 		
-		double powerLeft = (y-z) * slider;
-		double powerRight = (y+z) * slider;
+		double powerLeft = (y+z) * slider;
+		double powerRight = (-y+z) * slider;
 		
 		if (powerLeft > 1)powerLeft=1;
 		if (powerLeft < -1)powerLeft=-1;
 		if (powerRight > 1)powerRight=1;
 		if (powerRight < -1)powerRight=-1;
 		
-		this.left0.set(-powerLeft);
-		this.left1.set(-powerLeft);
+		this.left0.set(powerLeft);
+		this.left1.set(powerLeft);
 		this.right0.set(powerRight);
 		this.right1.set(powerRight);
 	}

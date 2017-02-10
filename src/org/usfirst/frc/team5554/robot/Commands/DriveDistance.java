@@ -13,6 +13,8 @@ public class DriveDistance extends Command
 	{
 		super("Drive Distance");
 		wantedValue = _wantedValue;
+		valuefromencoder = 0;
+		speed = 0;
 	}
 	
 	@Override

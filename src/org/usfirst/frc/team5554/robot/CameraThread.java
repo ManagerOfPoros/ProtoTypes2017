@@ -79,6 +79,7 @@ public class CameraThread extends Thread
 			
 			cameras.SetStreamer(liveCamera);
 			screen.stream(cameras.GetStream());
+
 		}
 	}
 	

@@ -1,46 +1,34 @@
 package org.usfirst.frc.team5554.robot;
 
-import edu.wpi.first.wpilibj.CounterBase;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Victor;
 
 public class Shooter 
 {
-	@SuppressWarnings("unused")
 	private Victor firstShooter;
 	private Victor secondShooter;
+	private Victor scrumble;
 	
 	private double speed = 0.45;
 	
-	private Encoder Encoder;
 	
-	public Shooter(int shooterFirstPort, int shooterSecondPort, int upperEncoderPort, int lowwerEncoderPort)
+	public Shooter(int shooterFirstPort, int shooterSecondPort, int scrumblePort)
 	{
 		firstShooter = new Victor(shooterFirstPort);
 		secondShooter = new Victor(shooterSecondPort);
-		Encoder = new Encoder(7, 8, false, CounterBase.EncodingType.k4X);  
-		
-//		upperEncoder.setMaxPeriod(.1);
-//		upperEncoder.setMinRate(10);
-//		upperEncoder.setReverseDirection(true);
-//		upperEncoder.setDistancePerPulse(5);
-//		upperEncoder.setSamplesToAverage(7);
-		Encoder.reset();
+		scrumble = new Victor(scrumblePort);
 	}
 	
 	//shooter
-	public void shoot(boolean toShoot)
+	public void shoot(double toShoot)
 	{
-		if(toShoot)
+		if(toShoot > 0)
 		{
-			//firstShooter.set(speed);
-			secondShooter.set(speed);
-			
-
+			firstShooter.set(speed);
+			secondShooter.set(-speed);
 		}
 		else
 		{
-			//firstShooter.set(0);
+			firstShooter.set(0);
 			secondShooter.set(0);
 		}
 		
@@ -65,5 +53,17 @@ public class Shooter
 	public void autoShoot()
 	{
 		
+	}
+	
+	public void scrumble(double toScrumble)
+	{
+		if (toScrumble > 0)
+		{
+			scrumble.set(-1);
+		}
+		else
+		{
+			scrumble.set(0);
+		}
 	}
 }

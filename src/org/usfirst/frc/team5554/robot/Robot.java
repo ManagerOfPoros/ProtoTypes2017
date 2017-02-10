@@ -15,13 +15,13 @@ public class Robot extends IterativeRobot {
 	/****************************************objects*******************************************/
 	private Driver driver;
 	private Shooter shooter;
-	@SuppressWarnings("unused")
 	private Feeder feeder;
 	@SuppressWarnings("unused")
 	private GearHolder gears;
 	private CameraThread streamer;
 	/****************************************Joysticks******************************************/
 	private Joystick joy;
+	private Joystick xbox;
 	/****************************************flags**********************************************/
 	private boolean ignoreIncreaseSwitch = false;
 	private boolean ignoreDecreaseSwitch = false;
@@ -38,22 +38,29 @@ public class Robot extends IterativeRobot {
 		
 		driver = new Driver(RobotMap.MOTOR_LEFT_ONE , RobotMap.MOTOR_LEFT_TWO, RobotMap.MOTOR_RIGHT_ONE, RobotMap.MOTOR_RIGHT_TWO );
 		
-		shooter = new Shooter(RobotMap.MOTOR_SHOOT_ONE,RobotMap.MOTOR_SHOOT_TWO,3,4);
+		shooter = new Shooter(RobotMap.MOTOR_SHOOT_ONE,RobotMap.MOTOR_SHOOT_TWO, RobotMap.SCRUMBLE_PORT);
 		
-		//feeder = new Feeder(RobotMap.MOTOR_FEEDER);
+		feeder = new Feeder(RobotMap.MOTOR_FEEDER);
 		
 		//gears = new GearHolder(0,2,4);
 		//gears.SetLeds(true);
 		
-		joy = new Joystick(0);  
+		joy = new Joystick(RobotMap.DRIVER_JOYSTICK_PORT);
+		xbox = new Joystick(RobotMap.DRIVER_XBOXJOYSTICK_PORT);  
 		
-		streamer = new CameraThread(joy);
+		streamer = new CameraThread(xbox);
 		streamer.start();
 		
 		/***********************************Autonomous Options***********************************************/
 		autoChooser = new SendableChooser<Command>();
 		autoChooser.addDefault("Empty", new Autonomous_Empty());
 		autoChooser.addObject("A1", new Autonomous_A1());
+		autoChooser.addObject("A2", new Autonomous_A2());
+		autoChooser.addObject("B", new Autonomous_B());
+		autoChooser.addObject("C1", new Autonomous_C1());
+		autoChooser.addObject("C2", new Autonomous_C2());
+		autoChooser.addObject("C3", new Autonomous_C3());
+		autoChooser.addObject("C4", new Autonomous_C4());
 		SmartDashboard.putData("Autonomous" , autoChooser);
 		/****************************************************************************************************/
 	
@@ -88,42 +95,45 @@ public class Robot extends IterativeRobot {
 	
 		/****************************************** Shooter *********************************************/
 		
-		shooter.shoot(joy.getRawButton(1));
+		shooter.shoot(xbox.getRawAxis(3));
 		
 		//increase speed button   // for tests 
-    	if(joy.getRawButton(3) && ignoreIncreaseSwitch == false)
-    	{
-			ignoreIncreaseSwitch = true;
-			
-    		if(shooter.getSpeed() <= 1)
-    		{
-    			shooter.setSpeed(shooter.getSpeed()+0.01);
-    		}
-    	}
-    	else if(!joy.getRawButton(3))
-    	{
-    		ignoreIncreaseSwitch = false;
-    	}
+//    	if(joy.getRawButton(3) && ignoreIncreaseSwitch == false)
+//    	{
+//			ignoreIncreaseSwitch = true;
+//			
+//    		if(shooter.getSpeed() <= 1)
+//    		{
+//    			shooter.setSpeed(shooter.getSpeed()+0.01);
+//    		}
+//    	}
+//    	else if(!joy.getRawButton(3))
+//    	{
+//    		ignoreIncreaseSwitch = false;
+//    	}
+//    	
+//		//decrease speed button
+//    	if(joy.getRawButton(4) && ignoreDecreaseSwitch == false)
+//    	{
+//    		ignoreDecreaseSwitch = true;
+//    		
+//    		if(shooter.getSpeed() >= 0)
+//    		{
+//    			shooter.setSpeed(shooter.getSpeed()-0.01);
+//    		}
+//
+//    	}
+//    	else if(!joy.getRawButton(4))
+//    	{
+//    		ignoreDecreaseSwitch = false;
+//    	}
     	
-		//decrease speed button
-    	if(joy.getRawButton(4) && ignoreDecreaseSwitch == false)
-    	{
-    		ignoreDecreaseSwitch = true;
-    		
-    		if(shooter.getSpeed() >= 0)
-    		{
-    			shooter.setSpeed(shooter.getSpeed()-0.01);
-    		}
-
-    	}
-    	else if(!joy.getRawButton(4))
-    	{
-    		ignoreDecreaseSwitch = false;
-    	}
+    	/****************************************** Scrumble *******************************************/
+    	shooter.scrumble(xbox.getRawAxis(2));
     	
 		/****************************************** Feeder *********************************************/
 		
-		//feeder.feed(joy.getRawButton(2));
+		feeder.feed(joy.getRawButton(1));
     	
     	/***************************************** Gear Holder *****************************************/
 
