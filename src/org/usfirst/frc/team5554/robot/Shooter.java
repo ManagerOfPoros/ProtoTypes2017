@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5554.robot;
 
+import edu.wpi.first.wpilibj.CounterBase;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Victor;
 
@@ -11,20 +12,20 @@ public class Shooter
 	
 	private double speed = 0.45;
 	
-	private Encoder upperEncoder;
+	private Encoder Encoder;
 	
 	public Shooter(int shooterFirstPort, int shooterSecondPort, int upperEncoderPort, int lowwerEncoderPort)
 	{
 		firstShooter = new Victor(shooterFirstPort);
 		secondShooter = new Victor(shooterSecondPort);
-		upperEncoder = new Encoder(7, 8, false, Encoder.EncodingType.k4X);  
+		Encoder = new Encoder(7, 8, false, CounterBase.EncodingType.k4X);  
 		
 //		upperEncoder.setMaxPeriod(.1);
 //		upperEncoder.setMinRate(10);
 //		upperEncoder.setReverseDirection(true);
 //		upperEncoder.setDistancePerPulse(5);
 //		upperEncoder.setSamplesToAverage(7);
-		upperEncoder.reset();
+		Encoder.reset();
 	}
 	
 	//shooter
@@ -34,7 +35,6 @@ public class Shooter
 		{
 			//firstShooter.set(speed);
 			secondShooter.set(speed);
-			System.out.println(upperEncoder.get());
 			
 
 		}
@@ -43,6 +43,11 @@ public class Shooter
 			//firstShooter.set(0);
 			secondShooter.set(0);
 		}
+		
+		
+		
+		
+		
 	}
 	
 	/*methods that benefit us in tests on the shooter*/

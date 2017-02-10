@@ -23,5 +23,7 @@ public enum RobotMap {;
 /*******************Constant Turning Angles In Degrees***************************************************/
       public final static int DEGREES_TO_TURN_FROM_SIDES_TO_SHOOT = 0; //TODO: Add a real measured value!
       public final static int DEGREES_TO_TURN_TO_AIRSHIP = 0; //TODO: Add a real measured value!
+      
+      public final static int[] CAMERA_PORTS = {0,1,2};
  
 }
