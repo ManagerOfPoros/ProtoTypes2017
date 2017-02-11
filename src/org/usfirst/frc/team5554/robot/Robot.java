@@ -97,7 +97,7 @@ public class Robot extends IterativeRobot {
 	
 		/****************************************** Shooter *********************************************/
 		
-		shooter.shoot(joy.getRawButton(6));
+		shooter.shoot(joy.getRawButton(1));
 		shooter.showVelocity();
 		
 		
