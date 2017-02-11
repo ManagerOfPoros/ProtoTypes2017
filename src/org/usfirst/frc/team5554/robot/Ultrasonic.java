@@ -19,4 +19,8 @@ public class Ultrasonic
 		
 		return mm;
 	}
+	
+	public double getRangeMeters(){
+		return this.getRangeCm()/100;
+	}
 }

@@ -7,8 +7,11 @@ public class Shooter
 	private Victor firstShooter;
 	private Victor secondShooter;
 	private Victor scrumble;
-	
-	private double speed = 0.45;
+	//private Ultrasonic ultrasonic;
+	//private SmartShooter smartshooter;
+	//	private double velocityForXMeters; // the velocity needed to get the balls in the boiler, given a certain distance.
+	 
+	private double Speed = 1;
 	
 	
 	public Shooter(int shooterFirstPort, int shooterSecondPort, int scrumblePort)
@@ -16,45 +19,47 @@ public class Shooter
 		firstShooter = new Victor(shooterFirstPort);
 		secondShooter = new Victor(shooterSecondPort);
 		scrumble = new Victor(scrumblePort);
+		//smartshooter = new SmartShooter();
+	//	smartshooter.start();//start checking the countChange every second
 	}
 	
 	//shooter
+	
+	
 	public void shoot(double toShoot)
 	{
 		if(toShoot > 0)
 		{
-			firstShooter.set(speed);
-			secondShooter.set(-speed);
+			firstShooter.set(Speed);
+			secondShooter.set(-Speed);
 		}
 		else
 		{
 			firstShooter.set(0);
 			secondShooter.set(0);
+		}	
+	}
+
+	
+	
+		/*public void smartShoot(double toShoot)
+{
+		 we need to know what is the speed needed to shoot and since we know it we know what the countChange needs to be
+	
+		if(toShoot>0){
+		
+			Speed = smartshooter.velocityToSpeed(smartshooter.calcVelocity(ultrasonic.getRangeMeters));
+			if()
+			this.shoot(toShoot);
+			
+			if(smartshooter.getCountChange()< something){
+				Speed+=0.05;
 		}
 		
-		
-		
-		
-		
 	}
-	
-	/*methods that benefit us in tests on the shooter*/
-	
-	public void setSpeed(double speed)
-	{
-		this.speed = speed;
 	}
-	
-	public double getSpeed()
-	{
-		return this.speed;
-	}
-	
-	public void autoShoot()
-	{
+	*/
 		
-	}
-	
 	public void scrumble(double toScrumble)
 	{
 		if (toScrumble > 0)
@@ -66,4 +71,19 @@ public class Shooter
 			scrumble.set(0);
 		}
 	}
-}
+	
+	
+
+	/*methods that benefit us in tests on the shooter*/
+	
+	public void setSpeed(double Speed)
+	{
+		this.Speed = Speed;
+	}
+	
+	public double getSpeed()
+	{
+		return this.Speed;
+	}
+	
+	}

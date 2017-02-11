@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class Autonomous_E extends CommandGroup {
 
     public Autonomous_E() {
-    	addSequential(new DriveDistance(RobotMap.DISTANCE_TO_AIRSHIP_FROM_MIDDLE));
+    //	addSequential(new DriveDistance(RobotMap.DISTANCE_TO_AIRSHIP_FROM_MIDDLE));
     	addSequential(new PlaceGear());
     }
 }

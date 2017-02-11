@@ -27,7 +27,7 @@ public class Driver
 	}
 	
 	/**
-	 * This function incharge of the movement of the robot with the joystick
+	 * This function in charge of the movement of the robot with the joystick
 	 * @since 15/1/2017
 	 * @param y The value of the joystick's y axis
 	 * @param z The value of the joystick's z axis

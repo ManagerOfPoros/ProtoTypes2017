@@ -7,6 +7,7 @@ import org.opencv.core.Mat;
 
 import edu.wpi.cscore.CvSink;
 import edu.wpi.cscore.UsbCamera;
+import edu.wpi.cscore.VideoException;
 
 
 public class CameraHandler 
@@ -27,39 +28,39 @@ public class CameraHandler
 	
 	
 	
-	private void AddCamera(int port, int width , int height)
+	private void AddCamera(int idx, int width , int height)
 	{
-		if(!cvSinks.containsKey(port))
+		if(!cvSinks.containsKey(idx))
 		{
 			try
 			{
-				cvSinks.put(port, new CvSink("cam"+String.valueOf(port)));
-				UsbCamera cam = new UsbCamera("cam"+String.valueOf(port) , port);
+				cvSinks.put(idx, new CvSink("cam"+String.valueOf(idx)));
+				UsbCamera cam = new UsbCamera("cam"+String.valueOf(idx) , idx);
 				cam.setResolution(width, height);
 				cam.setFPS(15);
-				cvSinks.get(port).setSource(cam);
-				cvSinks.get(port).setEnabled(false);
+				cvSinks.get(idx).setSource(cam);
+				cvSinks.get(idx).setEnabled(false);
 				
 			}
-			catch(Exception e)
+			catch(VideoException e)
 			{
-				System.out.println("Failed to initialize camera on port: " + port);
+				System.out.println("Failed to initialize camera on port: " + idx);
 				throw(e);
 			}
 		}
 		else
 		{
-			System.out.println("Camera on port " + port + " is already defined.");
+			System.out.println("Camera on port " + idx + " is already defined.");
 		}
 	}
 	
-	public void SetStreamer(int cameraPort)
+	public void SetStreamer(int idx)
 	{
-		if(cameraPort != currentCamera)
+		if(idx != currentCamera)
 		{
 			cvSinks.get(currentCamera).setEnabled(false);
-			cvSinks.get(cameraPort).setEnabled(true);
-			currentCamera = cameraPort;
+			cvSinks.get(idx).setEnabled(true);
+			currentCamera = idx;
 		}
 	}
 	

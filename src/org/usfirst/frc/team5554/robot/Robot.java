@@ -23,7 +23,9 @@ public class Robot extends IterativeRobot {
 	private Joystick joy;
 	private Joystick xbox;
 	/****************************************flags**********************************************/
+	@SuppressWarnings("unused")
 	private boolean ignoreIncreaseSwitch = false;
+	@SuppressWarnings("unused")
 	private boolean ignoreDecreaseSwitch = false;
 	/*****************************************Autonomous******************************************/
 	Command autonomousCommand;
@@ -48,7 +50,7 @@ public class Robot extends IterativeRobot {
 		joy = new Joystick(RobotMap.DRIVER_JOYSTICK_PORT);
 		xbox = new Joystick(RobotMap.DRIVER_XBOXJOYSTICK_PORT);  
 		
-		streamer = new CameraThread(xbox);
+		streamer = new CameraThread(joy);
 		streamer.start();
 		
 		/***********************************Autonomous Options***********************************************/
@@ -96,6 +98,8 @@ public class Robot extends IterativeRobot {
 		/****************************************** Shooter *********************************************/
 		
 		shooter.shoot(xbox.getRawAxis(3));
+		
+		
 		
 		//increase speed button   // for tests 
 //    	if(joy.getRawButton(3) && ignoreIncreaseSwitch == false)
