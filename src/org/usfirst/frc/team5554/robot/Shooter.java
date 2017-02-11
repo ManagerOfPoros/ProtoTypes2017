@@ -9,7 +9,6 @@ public class Shooter
 	private Victor scrumble;
 	//private Ultrasonic ultrasonic;
 	//private SmartShooter smartshooter;
-	//	private double velocityForXMeters; // the velocity needed to get the balls in the boiler, given a certain distance.
 	 
 	private double Speed = 1;
 	
@@ -48,8 +47,7 @@ public class Shooter
 	
 		if(toShoot>0){
 		
-			Speed = smartshooter.velocityToSpeed(smartshooter.calcVelocity(ultrasonic.getRangeMeters));
-			if()
+			Speed = smartshooter.velocityToSpeed(smartshooter.calcVelocity(ultrasonic.getRangeMeters()));
 			this.shoot(toShoot);
 			
 			if(smartshooter.getCountChange()< something){
