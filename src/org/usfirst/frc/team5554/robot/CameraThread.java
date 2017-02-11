@@ -23,9 +23,9 @@ public class CameraThread extends Thread
 	@Override	
 	public void run()
 	{		
-		CameraHandler cameras = new CameraHandler(RobotMap.CAMERA_PORTS,320,240);
+		CameraHandler cameras = new CameraHandler(RobotMap.CAMERA_INDEXES,640,480);
 
-		VideoBox screen = new VideoBox(320 , 240 , "Live Feed");
+		VideoBox screen = new VideoBox(640 , 480 , "Live Feed");
 
 		int liveCamera = 0;
 				

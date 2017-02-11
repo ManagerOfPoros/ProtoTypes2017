@@ -56,13 +56,13 @@ public class Robot extends IterativeRobot {
 		/***********************************Autonomous Options***********************************************/
 		autoChooser = new SendableChooser<Command>();
 		autoChooser.addDefault("Empty", new Autonomous_Empty());
-		autoChooser.addObject("A1", new Autonomous_A1());
-		autoChooser.addObject("A2", new Autonomous_A2());
-		autoChooser.addObject("B", new Autonomous_B());
-		autoChooser.addObject("C1", new Autonomous_C1());
-		autoChooser.addObject("C2", new Autonomous_C2());
-		autoChooser.addObject("C3", new Autonomous_C3());
-		autoChooser.addObject("C4", new Autonomous_C4());
+		autoChooser.addObject("A1", new Autonomous_A1(driver));
+		autoChooser.addObject("A2", new Autonomous_A2(driver));
+		autoChooser.addObject("B", new Autonomous_B(driver));
+		autoChooser.addObject("C1", new Autonomous_C1(driver, shooter));
+		autoChooser.addObject("C2", new Autonomous_C2(driver));
+		autoChooser.addObject("C3", new Autonomous_C3(driver, shooter));
+		autoChooser.addObject("C4", new Autonomous_C4(driver));
 		SmartDashboard.putData("Autonomous" , autoChooser);
 		/****************************************************************************************************/
 	

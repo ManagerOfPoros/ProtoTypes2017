@@ -1,6 +1,6 @@
 package org.usfirst.frc.team5554.robot;
 
-public enum RobotMap {;
+public class RobotMap {
 
 /*******************Motor Ports**************************************************************************/
       public final static int MOTOR_LEFT_ONE = 0;
@@ -30,6 +30,6 @@ public enum RobotMap {;
       public final static int DEGREES_TO_TURN_FROM_SIDES_TO_SHOOT = 0; //TODO: Add a real measured value!
       public final static int DEGREES_TO_TURN_TO_AIRSHIP = 0; //TODO: Add a real measured value!
       
-      public final static int[] CAMERA_PORTS = {0,1,2};
+      public final static int[] CAMERA_INDEXES = {0,1,2};
  
 }

@@ -37,7 +37,7 @@ public class CameraHandler
 				cvSinks.put(idx, new CvSink("cam"+String.valueOf(idx)));
 				UsbCamera cam = new UsbCamera("cam"+String.valueOf(idx) , idx);
 				cam.setResolution(width, height);
-				cam.setFPS(15);
+				cam.setFPS(30);
 				cvSinks.get(idx).setSource(cam);
 				cvSinks.get(idx).setEnabled(false);
 				

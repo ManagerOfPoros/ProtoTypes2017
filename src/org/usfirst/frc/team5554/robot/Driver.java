@@ -8,6 +8,7 @@ public class Driver
 	private Victor left1;
 	private Victor right0;
 	private Victor right1;
+	public double speed = 0; //TODO: correct this with travelDistance();
 	
 	/**
 	 * The constructor configurates the motors objects to certain ports
@@ -58,7 +59,7 @@ public class Driver
 		//to drive an exact distance
 	}
 	
-	public static void Spin(double degrees)
+	public void Spin(double degrees)
 	{
 		if(degrees > 0){
 			//then spin right
@@ -66,13 +67,5 @@ public class Driver
 			degrees *= -1;
 			//then spin left
 		}
-	}
-	
-	public static void ReleaseGear()
-	{
-		//Drive backwards for a second after 
-		//the gear was taken from the robot
-	}
-		
-		
+	}	
 }
