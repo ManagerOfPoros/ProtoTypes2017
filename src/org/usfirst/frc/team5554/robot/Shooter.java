@@ -4,42 +4,46 @@ import edu.wpi.first.wpilibj.Victor;
 
 public class Shooter 
 {
-	private Victor firstShooter;
+	//private Victor firstShooter;
 	private Victor secondShooter;
 	private Victor scrumble;
+	//private int distanceCounter;
 	//private Ultrasonic ultrasonic;
 	//private SmartShooter smartshooter;
 	 
-	private double Speed = 1;
+	private double Speed = 0.5;
 	
 	
 	public Shooter(int shooterFirstPort, int shooterSecondPort, int scrumblePort)
 	{
-		firstShooter = new Victor(shooterFirstPort);
-		secondShooter = new Victor(shooterSecondPort);
+		//firstShooter = new Victor(shooterFirstPort);
+		secondShooter = new Motor(9);
 		scrumble = new Victor(scrumblePort);
 		//smartshooter = new SmartShooter();
-	//	smartshooter.start();//start checking the countChange every second
+		//	smartshooter.start();//start checking the countChange every second
 	}
 	
 	//shooter
 	
 	
-	public void shoot(double toShoot)
+	public void shoot(boolean toShoot)
 	{
-		if(toShoot > 0)
+		if(toShoot )
 		{
-			firstShooter.set(Speed);
+			//firstShooter.set(Speed);
 			secondShooter.set(-Speed);
 		}
 		else
 		{
-			firstShooter.set(0);
+			//firstShooter.set(0);
 			secondShooter.set(0);
 		}	
 	}
-
 	
+	public void showVelocity(){
+		//System.out.println(secondShooter.getVelocity());
+		//System.out.println(secondShooter.velocityToSpeed(secondShooter.getVelocity()));
+	}
 	
 		/*public void smartShoot(double toShoot)
 {
@@ -50,7 +54,9 @@ public class Shooter
 			Speed = smartshooter.velocityToSpeed(smartshooter.calcVelocity(ultrasonic.getRangeMeters()));
 			this.shoot(toShoot);
 			
-			if(smartshooter.getCountChange()< something){
+			
+			
+			if(smartshooter.getCountChange()< smartshooter.neededCountChange(smartshooter.calcVelocity(ultrasonic.getRangeMeters())){
 				Speed+=0.05;
 		}
 		

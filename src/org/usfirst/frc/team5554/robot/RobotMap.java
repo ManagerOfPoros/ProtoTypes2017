@@ -9,14 +9,14 @@ public enum RobotMap {;
       public final static int MOTOR_RIGHT_TWO = 3;
       public final static int MOTOR_FEEDER = 5;
       public final static int MOTOR_SHOOT_ONE = 8;
-      public final static int MOTOR_SHOOT_TWO = 4;
+      public final static int MOTOR_SHOOT_TWO = 9;
       public final static int SCRUMBLE_PORT = 6;
       //public final static int MOTOR_SHOOTER_FEEDER = 9;
 /*******************Control & Sensor Ports**************************************************************************/
       public final static int DRIVER_JOYSTICK_PORT = 0;
       public final static int DRIVER_XBOXJOYSTICK_PORT = 1;
-  //    public final static int ENCODER_SHOOTER_PORT_FIRST = 2;
-   //   public final static int ENCODER_SHOOTER_PORT_SECOND = 3;
+      public final static int ENCODER_SHOOTER_PORT_FIRST = 2;
+      public final static int ENCODER_SHOOTER_PORT_SECOND = 3;
       
 /*******************Field & Robot Distances In Centimeters***********************************************/
       public final static int DISTANCE_TO_AIRSHIP_FROM_SIDE = 0; //TODO: Add a real measured value!

@@ -97,47 +97,48 @@ public class Robot extends IterativeRobot {
 	
 		/****************************************** Shooter *********************************************/
 		
-		shooter.shoot(xbox.getRawAxis(3));
+		shooter.shoot(joy.getRawButton(6));
+		shooter.showVelocity();
 		
 		
 		
 		//increase speed button   // for tests 
-//    	if(joy.getRawButton(3) && ignoreIncreaseSwitch == false)
-//    	{
-//			ignoreIncreaseSwitch = true;
-//			
-//    		if(shooter.getSpeed() <= 1)
-//    		{
-//    			shooter.setSpeed(shooter.getSpeed()+0.01);
-//    		}
-//    	}
-//    	else if(!joy.getRawButton(3))
-//    	{
-//    		ignoreIncreaseSwitch = false;
-//    	}
-//    	
-//		//decrease speed button
-//    	if(joy.getRawButton(4) && ignoreDecreaseSwitch == false)
-//    	{
-//    		ignoreDecreaseSwitch = true;
-//    		
-//    		if(shooter.getSpeed() >= 0)
-//    		{
-//    			shooter.setSpeed(shooter.getSpeed()-0.01);
-//    		}
-//
-//    	}
-//    	else if(!joy.getRawButton(4))
-//    	{
-//    		ignoreDecreaseSwitch = false;
-//    	}
+    	if(joy.getRawButton(3) && ignoreIncreaseSwitch == false)
+    	{
+			ignoreIncreaseSwitch = true;
+			
+    		if(shooter.getSpeed() <= 1)
+    		{
+    			shooter.setSpeed(shooter.getSpeed()+0.01);
+    		}
+    	}
+    	else if(!joy.getRawButton(3))
+    	{
+    		ignoreIncreaseSwitch = false;
+    	}
+    	
+		//decrease speed button
+    		if(joy.getRawButton(4) && ignoreDecreaseSwitch == false)
+    	{
+    		ignoreDecreaseSwitch = true;
+    		
+    		if(shooter.getSpeed() >= 0)
+    		{
+    			shooter.setSpeed(shooter.getSpeed()-0.01);
+    		}
+
+    	}
+    		else if(!joy.getRawButton(4))
+    	{
+    		ignoreDecreaseSwitch = false;
+    	}
     	
     	/****************************************** Scrumble *******************************************/
     	shooter.scrumble(xbox.getRawAxis(2));
     	
 		/****************************************** Feeder *********************************************/
 		
-		feeder.feed(joy.getRawButton(1));
+		//feeder.feed(joy.getRawButton(1));
     	
     	/***************************************** Gear Holder *****************************************/
 
