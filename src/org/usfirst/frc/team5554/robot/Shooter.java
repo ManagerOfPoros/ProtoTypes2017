@@ -19,7 +19,7 @@ public class Shooter
 		secondShooter = new Victor(shooterSecondPort);
 		scrumble = new Victor(scrumblePort);
 		//smartshooter = new SmartShooter();
-	//	smartshooter.start();//start checking the countChange every second
+	    //smartshooter.start(); //start checking the countChange every second
 	}
 	
 	//shooter

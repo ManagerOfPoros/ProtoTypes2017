@@ -93,7 +93,7 @@ public class Robot extends IterativeRobot {
 		
 		/****************************************** Driving *********************************************/
 		
-		driver.Moving(joy.getRawAxis(1), joy.getRawAxis(2), joy.getRawAxis(3));
+		driver.moving(joy.getRawAxis(1), joy.getRawAxis(2), joy.getRawAxis(3));
 	
 		/****************************************** Shooter *********************************************/
 		

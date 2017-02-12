@@ -3,6 +3,7 @@ package org.usfirst.frc.team5554.robot;
 import edu.wpi.first.wpilibj.CounterBase;
 import edu.wpi.first.wpilibj.Encoder;
 
+@SuppressWarnings("unused")
 public class SmartShooter extends Thread {
 
 	Encoder Enc;

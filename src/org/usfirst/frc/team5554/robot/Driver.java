@@ -15,7 +15,7 @@ public class Driver
 	 * @since 15/1/2017
 	 * @param MOTOR_LEFT port for left motor
 	 * @param MOTOR_RIGHT port for right motor
-	 * Author: Gil Meri
+	 * @author Gil Meri
 	 */
 	public Driver(int motorLeftOne , int motorLeftTwo , int motorRightOne , int motorRightTwo) 
 	{
@@ -28,14 +28,14 @@ public class Driver
 	}
 	
 	/**
-	 * This function in charge of the movement of the robot with the joystick
+	 * This function is in charge of the movement of the robot with the joystick
 	 * @since 15/1/2017
 	 * @param y The value of the joystick's y axis
 	 * @param z The value of the joystick's z axis
 	 * @param slider The value of the joystick's slider axis
-	 * Author: Gil Meri
+	 * @author Gil Meri
 	 */
-	public void Moving (double y, double z, double slider) 
+	public void moving(double y, double z, double slider) 
 	{
 		slider = (-slider+1)/2;
 		
@@ -52,20 +52,47 @@ public class Driver
 		this.right0.set(powerRight);
 		this.right1.set(powerRight);
 	}
-	
-	public static void Drive(double speed)
+	/**
+	 * This function is in charge of moving the robot a given speed
+	 * for autonomous actions
+	 * @since 10/2/2017
+	 * @param speed The needed speed to maintain during driving.
+	 * @author Eyal Meltser
+	 */
+	public static void drive(double speed)
 	{
 		//here it will start the motors for the driver given a speed
 		//to drive an exact distance
 	}
 	
-	public void Spin(double degrees)
+	/**
+	 * This function in charge of turning the robot a given angle
+	 * for autonomous actions
+	 * @since 10/2/2017
+	 * @param angle The angle at which the robot must turn,
+	 * positive for turning right and negative for turning left,
+	 * in degrees.
+	 * @author Eyal Meltser
+	 */
+	public void spin(double angle)
 	{
-		if(degrees > 0){
+		if(angle > 0){
 			//then spin right
-		}else if(degrees < 0){
-			degrees *= -1;
+		}else if(angle < 0){
+			angle *= -1;
 			//then spin left
 		}
-	}	
+	}
+	
+	/**
+	 * This function in charge of moving the robot a given distance
+	 * for autonomous actions
+	 * @since 10/2/2017
+	 * @param distance The distance at which the robot must go, in meters.
+	 * @author Eyal Meltser
+	 */
+	public void travelDistance(int distance)
+	{
+		//do something
+	}
 }
