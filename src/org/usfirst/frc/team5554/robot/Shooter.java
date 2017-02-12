@@ -1,26 +1,31 @@
 package org.usfirst.frc.team5554.robot;
 
 import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.PIDController;;
 
 public class Shooter 
 {
-	//private Victor firstShooter;
+	private Victor firstShooter;
 	private Victor secondShooter;
 	private Victor scrumble;
-	//private int distanceCounter;
-	//private Ultrasonic ultrasonic;
-	//private SmartShooter smartshooter;
+	private Victor duduShooter;
 	 
-	private double Speed = 0.5;
+	private double Speed = 0.6;
 	
-	
-	public Shooter(int shooterFirstPort, int shooterSecondPort, int scrumblePort)
+
+	public Shooter(int shooterFirstPort,int shooterSecondPort, int scrumblePort)
 	{
-		//firstShooter = new Victor(shooterFirstPort);
-		secondShooter = new Motor(9);
+		firstShooter = new Motor(shooterFirstPort);
+		secondShooter = new Victor(shooterSecondPort);
 		scrumble = new Victor(scrumblePort);
 		//smartshooter = new SmartShooter();
 		//	smartshooter.start();//start checking the countChange every second
+		
+		
+		//PIDController = new PIDController(0, 0, 0, Enc, output)
+		
+		
+		
 	}
 	
 	//shooter
@@ -30,20 +35,20 @@ public class Shooter
 	{
 		if(toShoot )
 		{
-			//firstShooter.set(Speed);
+			firstShooter.set(-Speed);
 			secondShooter.set(-Speed);
+			
+			//secondShooter.checkVelocity();
+			//System.out.println(secondShooter.getVelocity());*/
 		}
 		else
 		{
-			//firstShooter.set(0);
+			firstShooter.set(0);
 			secondShooter.set(0);
 		}	
 	}
+
 	
-	public void showVelocity(){
-		//System.out.println(secondShooter.getVelocity());
-		//System.out.println(secondShooter.velocityToSpeed(secondShooter.getVelocity()));
-	}
 	
 		/*public void smartShoot(double toShoot)
 {

@@ -51,7 +51,7 @@ public class Robot extends IterativeRobot {
 		xbox = new Joystick(RobotMap.DRIVER_XBOXJOYSTICK_PORT);  
 		
 		streamer = new CameraThread(joy);
-		streamer.start();
+		/*streamer.start();*/
 		
 		/***********************************Autonomous Options***********************************************/
 		autoChooser = new SendableChooser<Command>();
@@ -97,8 +97,10 @@ public class Robot extends IterativeRobot {
 	
 		/****************************************** Shooter *********************************************/
 		
-		shooter.shoot(joy.getRawButton(1));
-		shooter.showVelocity();
+			shooter.shoot(joy.getRawButton(1));
+		
+			
+			
 		
 		
 		
@@ -134,7 +136,7 @@ public class Robot extends IterativeRobot {
     	}
     	
     	/****************************************** Scrumble *******************************************/
-    	shooter.scrumble(xbox.getRawAxis(2));
+    	//shooter.scrumble(xbox.getRawAxis(2));
     	
 		/****************************************** Feeder *********************************************/
 		
