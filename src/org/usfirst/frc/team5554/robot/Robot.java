@@ -44,7 +44,7 @@ public class Robot extends IterativeRobot {
 		/***********************************************************************************************************/
 		driver = new Driver(RobotMap.MOTOR_LEFT_ONE , RobotMap.MOTOR_LEFT_TWO, RobotMap.MOTOR_RIGHT_ONE, RobotMap.MOTOR_RIGHT_TWO,null,encoder );
 		
-		shooter = new Shooter(RobotMap.MOTOR_SHOOT_ONE,RobotMap.MOTOR_SHOOT_TWO, RobotMap.SCRUMBLE_PORT);
+		shooter = new Shooter(RobotMap.MOTOR_SHOOT_ONE,RobotMap.MOTOR_SHOOT_TWO, RobotMap.MOTOR_SCRUMBLE_PORT);
 		
 		feeder = new Feeder(RobotMap.MOTOR_FEEDER);
 		
@@ -91,7 +91,7 @@ public class Robot extends IterativeRobot {
 	{
 		streamer.toSwitch = true;
 		encoder.reset();
-		driver.DriveSteady(-0.5);
+		//driver.DriveSteady(-0.5);
 		
 	}
 
@@ -105,9 +105,10 @@ public class Robot extends IterativeRobot {
 	
 		/****************************************** Shooter *********************************************/
 			shooter.shoot(joy.getRawButton(1));
-			counter++;
-			sum =+ encoder.getRate();
-			System.out.println(encoder.getRate());
+			
+//			counter++;
+//			sum =+ encoder.getRate();
+//			System.out.println(encoder.getRate());
 										
 		
 		//increase speed button   // for tests 

@@ -18,12 +18,17 @@ public class Motor extends Victor{
 //	final double pulse = (diameterOfShooterWheel*pi)/(pulsesPerRevolution*100); // the distance we travel in one pulse
 	
 	
-	public Motor(int port , Encoder enc) 
+	public Motor(int port) 
 	{
-		super(port);
-		this.encoder = enc;
+		super(port);		
 	}
 	
+	
+	public void SetFeedbackDevice(Encoder enc)
+	{
+		this.encoder = enc;
+	}
+
 	public void SetPIDType(PIDSourceType type)
 	{
 		encoder.setPIDSourceType(type);
@@ -31,36 +36,53 @@ public class Motor extends Victor{
 	
 	public void SetPID(double p, double i, double d)
 	{
+		SetPIDController(p, i, d, 0);
+	}
+	
+	public void SetPID(double p, double i, double d, double f)
+	{
+		SetPIDController(p, i, d, f);
+	}		
+
+	private void SetPIDController(double p,double i, double d, double f)
+	{
 		if(controller == null)
 		{
 			System.out.println("PID controller created");
-			controller = new PIDController(p, i, d, encoder, this);
+			controller = new PIDController(p, i, d,f, encoder, this);
 		}
 		else
 		{
-			SetPid(p, i, d, 0);
+		controller.setPID(p, i, d , f);
+		}
+	}
+	
+	public void StartPIDLoop(double SetPoint)
+	{
+		if(controller==null)
+		{
+			System.out.println("PIDController is null");
+		}
+		else
+		{		
+			controller.setSetpoint(SetPoint);
+			
+			if(!controller.isEnabled())
+			{
+				controller.enable();
+			}
 		}
 	}
 	
 	public void GoDistance(double distance)
 	{
-		SetPid(controller.getP(),controller.getI(),controller.getD(),0);
-		controller.setSetpoint(distance);
-		controller.enable();
+		StartPIDLoop(distance);
 	}
 	
-	public void MaintainSpeed(double speed)
+	public void GoSteady(double speed)
 	{
-		SetPid(controller.getP(),controller.getI(),controller.getD(),speed);
-		controller.setSetpoint(speed);
-		controller.enable();
+		StartPIDLoop(speed);
 	}
-	
-	private void SetPid(double p,double i, double d, double f)
-	{
-		controller.setPID(p, i, d , f);
-	}
-	
-	
+
 
 }

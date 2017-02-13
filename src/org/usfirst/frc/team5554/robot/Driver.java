@@ -20,10 +20,17 @@ public class Driver
 	public Driver(int motorLeftOne , int motorLeftTwo , int motorRightOne , int motorRightTwo , Encoder leftEnc , Encoder rightEnc) 
 	{
 		
-		left0 = new Motor(motorLeftOne,leftEnc);
-		left1 = new Motor(motorLeftTwo,leftEnc);
-		right0 = new Motor(motorRightOne,rightEnc);
-		right1 = new Motor(motorRightTwo,rightEnc);
+		left0 = new Motor(motorLeftOne);
+		left0.SetFeedbackDevice(leftEnc);
+		
+		left1 = new Motor(motorLeftTwo);
+		left1.SetFeedbackDevice(leftEnc);
+		
+		right0 = new Motor(motorRightOne);
+		right0.SetFeedbackDevice(leftEnc);
+		
+		right1 = new Motor(motorRightTwo);
+		right1.SetFeedbackDevice(leftEnc);
 		
 	}
 	
@@ -33,9 +40,9 @@ public class Driver
 	 * @param y The value of the joystick's y axis
 	 * @param z The value of the joystick's z axis
 	 * @param slider The value of the joystick's slider axis
-	 * Author: Gil Meri
+	 * @author Gil Meri
 	 */
-	public void Moving (double y, double z, double slider) 
+	public void Moving(double y, double z, double slider) 
 	{
 		slider = (-slider+1)/2;
 		
@@ -67,19 +74,24 @@ public class Driver
 			degrees *= -1;
 			//then spin left
 		}
-	}
+	}	
 	
-	
-	public void DriveDistance(double distance)
+	public void DriveDistance(double leftDistance, double rightDistance)
 	{
 		right0.SetPID(1, 0.001, 2);
 		right1.SetPID(1, 0.001, 2);
+		left0.SetPID(1, 0.001, 2);
+		left1.SetPID(1, 0.001, 2);
 		
 		right0.SetPIDType(PIDSourceType.kDisplacement);
 		right1.SetPIDType(PIDSourceType.kDisplacement);
+		left0.SetPIDType(PIDSourceType.kDisplacement);
+		left1.SetPIDType(PIDSourceType.kDisplacement);
 		
-		this.right0.GoDistance(distance);
-		this.right1.GoDistance(distance);
+		this.right0.GoDistance(rightDistance);
+		this.right1.GoDistance(rightDistance);
+		this.left0.GoDistance(leftDistance);
+		this.left1.GoDistance(leftDistance);
 	}
 	
 	public void DriveSteady(double speed)
@@ -90,8 +102,8 @@ public class Driver
 		right0.SetPIDType(PIDSourceType.kRate);
 		right1.SetPIDType(PIDSourceType.kRate);
 		
-		this.right0.MaintainSpeed(speed);
-		this.right1.MaintainSpeed(speed);
+		this.right0.GoSteady(speed);
+		this.right1.GoSteady(speed);
 	}
 		
 		

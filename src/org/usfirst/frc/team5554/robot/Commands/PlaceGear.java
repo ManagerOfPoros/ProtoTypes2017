@@ -19,7 +19,7 @@ public class PlaceGear extends Command {
     	//Drive and hit the airship,
     	//then wait for the gear to be taken out.
     	System.out.println("The robot is ready to release the gear man!");
-    	Driver.ReleaseGear();
+    	//Driver.ReleaseGear();
     }
 
     @Override
