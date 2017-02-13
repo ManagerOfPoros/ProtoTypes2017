@@ -8,14 +8,14 @@ public class Shooter
 	private Victor firstShooter;
 	private Victor secondShooter;
 	private Victor scrumble;
-	private Victor duduShooter;
 	 
 	private double Speed = 0.6;
 	
 
 	public Shooter(int shooterFirstPort,int shooterSecondPort, int scrumblePort)
 	{
-		firstShooter = new Motor(shooterFirstPort);
+		firstShooter = new Victor(shooterFirstPort);
+		
 		secondShooter = new Victor(shooterSecondPort);
 		scrumble = new Victor(scrumblePort);
 		//smartshooter = new SmartShooter();
@@ -35,11 +35,9 @@ public class Shooter
 	{
 		if(toShoot )
 		{
-			firstShooter.set(-Speed);
-			secondShooter.set(-Speed);
+			firstShooter.set(Speed);
+			secondShooter.set(Speed);
 			
-			//secondShooter.checkVelocity();
-			//System.out.println(secondShooter.getVelocity());*/
 		}
 		else
 		{

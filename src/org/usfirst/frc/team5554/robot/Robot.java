@@ -2,6 +2,8 @@ package org.usfirst.frc.team5554.robot;
 
 import org.usfirst.frc.team5554.robot.Commands.*;
 
+import edu.wpi.first.wpilibj.CounterBase;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
@@ -23,22 +25,24 @@ public class Robot extends IterativeRobot {
 	private Joystick joy;
 	private Joystick xbox;
 	/****************************************flags**********************************************/
-	@SuppressWarnings("unused")
 	private boolean ignoreIncreaseSwitch = false;
-	@SuppressWarnings("unused")
 	private boolean ignoreDecreaseSwitch = false;
 	/*****************************************Autonomous******************************************/
 	Command autonomousCommand;
 	SendableChooser<Command> autoChooser;
 	/********************************************************************************************/
+	private double sum = 0.0;
+	private double counter = 0;
 	
-	
+	Encoder encoder;
 	
 	@Override
 	public void robotInit() 
 	{
-		
-		driver = new Driver(RobotMap.MOTOR_LEFT_ONE , RobotMap.MOTOR_LEFT_TWO, RobotMap.MOTOR_RIGHT_ONE, RobotMap.MOTOR_RIGHT_TWO );
+		encoder = new Encoder(6,7,true,CounterBase.EncodingType.k4X);
+		encoder.setDistancePerPulse(RobotMap.DIAMETER_DRIVE_WHEEL/RobotMap.PULSES_PER_REVELAION);
+		/***********************************************************************************************************/
+		driver = new Driver(RobotMap.MOTOR_LEFT_ONE , RobotMap.MOTOR_LEFT_TWO, RobotMap.MOTOR_RIGHT_ONE, RobotMap.MOTOR_RIGHT_TWO,null,encoder );
 		
 		shooter = new Shooter(RobotMap.MOTOR_SHOOT_ONE,RobotMap.MOTOR_SHOOT_TWO, RobotMap.SCRUMBLE_PORT);
 		
@@ -65,7 +69,8 @@ public class Robot extends IterativeRobot {
 		autoChooser.addObject("C4", new Autonomous_C4());
 		SmartDashboard.putData("Autonomous" , autoChooser);
 		/****************************************************************************************************/
-	
+		
+		
 	}
 
 	@Override
@@ -85,6 +90,9 @@ public class Robot extends IterativeRobot {
 	public void teleopInit()
 	{
 		streamer.toSwitch = true;
+		encoder.reset();
+		driver.DriveSteady(-0.5);
+		
 	}
 
 	@Override
@@ -96,13 +104,11 @@ public class Robot extends IterativeRobot {
 		driver.Moving(joy.getRawAxis(1), joy.getRawAxis(2), joy.getRawAxis(3));
 	
 		/****************************************** Shooter *********************************************/
-		
 			shooter.shoot(joy.getRawButton(1));
-		
-			
-			
-		
-		
+			counter++;
+			sum =+ encoder.getRate();
+			System.out.println(encoder.getRate());
+										
 		
 		//increase speed button   // for tests 
     	if(joy.getRawButton(3) && ignoreIncreaseSwitch == false)
@@ -153,6 +159,7 @@ public class Robot extends IterativeRobot {
 	public void disabledPeriodic()
 	{
 		streamer.toSwitch = false;
+		System.out.println("The average speed is: " + (sum/counter));
 	}
 
 	@Override

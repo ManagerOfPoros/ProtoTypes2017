@@ -12,6 +12,7 @@ public enum RobotMap {;
       public final static int MOTOR_SHOOT_TWO = 9;
       public final static int SCRUMBLE_PORT = 6;
       //public final static int MOTOR_SHOOTER_FEEDER = 9;
+
 /*******************Control & Sensor Ports**************************************************************************/
       public final static int DRIVER_JOYSTICK_PORT = 0;
       public final static int DRIVER_XBOXJOYSTICK_PORT = 1;
@@ -26,10 +27,14 @@ public enum RobotMap {;
       public final static int ROBOT_WIDTH = 101;
       public final static int ROBOT_LENGTH = 91;
       public final static int ROBOT_HEIGHT = 60;
+      
 /*******************Constant Turning Angles In Degrees***************************************************/
       public final static int DEGREES_TO_TURN_FROM_SIDES_TO_SHOOT = 0; //TODO: Add a real measured value!
       public final static int DEGREES_TO_TURN_TO_AIRSHIP = 0; //TODO: Add a real measured value!
       
       public final static int[] CAMERA_PORTS = {0,1,2};
+/******************Encoder Values************************************************************************/
+      public final static double DIAMETER_DRIVE_WHEEL = 0.1524 * Math.PI;
+      public final static int PULSES_PER_REVELAION = 360;
  
 }

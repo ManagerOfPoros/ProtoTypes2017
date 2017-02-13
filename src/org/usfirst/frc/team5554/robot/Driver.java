@@ -1,13 +1,14 @@
 package org.usfirst.frc.team5554.robot;
 
-import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.PIDSourceType;
 
 public class Driver
 {
-	private Victor left0;
-	private Victor left1;
-	private Victor right0;
-	private Victor right1;
+	private Motor left0;
+	private Motor left1;
+	private Motor right0;
+	private Motor right1;
 	
 	/**
 	 * The constructor configurates the motors objects to certain ports
@@ -16,13 +17,13 @@ public class Driver
 	 * @param MOTOR_RIGHT port for right motor
 	 * Author: Gil Meri
 	 */
-	public Driver(int motorLeftOne , int motorLeftTwo , int motorRightOne , int motorRightTwo) 
+	public Driver(int motorLeftOne , int motorLeftTwo , int motorRightOne , int motorRightTwo , Encoder leftEnc , Encoder rightEnc) 
 	{
 		
-		left0 = new Victor(motorLeftOne);
-		left1 = new Victor(motorLeftTwo);
-		right0 = new Victor(motorRightOne);
-		right1 = new Victor(motorRightTwo);
+		left0 = new Motor(motorLeftOne,leftEnc);
+		left1 = new Motor(motorLeftTwo,leftEnc);
+		right0 = new Motor(motorRightOne,rightEnc);
+		right1 = new Motor(motorRightTwo,rightEnc);
 		
 	}
 	
@@ -46,8 +47,8 @@ public class Driver
 		if (powerRight > 1)powerRight=1;
 		if (powerRight < -1)powerRight=-1;
 		
-		this.left0.set(powerLeft);
-		this.left1.set(powerLeft);
+		//this.left0.set(powerLeft);
+		//this.left1.set(powerLeft);
 		this.right0.set(powerRight);
 		this.right1.set(powerRight);
 	}
@@ -68,10 +69,29 @@ public class Driver
 		}
 	}
 	
-	public static void ReleaseGear()
+	
+	public void DriveDistance(double distance)
 	{
-		//Drive backwards for a second after 
-		//the gear was taken from the robot
+		right0.SetPID(1, 0.001, 2);
+		right1.SetPID(1, 0.001, 2);
+		
+		right0.SetPIDType(PIDSourceType.kDisplacement);
+		right1.SetPIDType(PIDSourceType.kDisplacement);
+		
+		this.right0.GoDistance(distance);
+		this.right1.GoDistance(distance);
+	}
+	
+	public void DriveSteady(double speed)
+	{
+		right0.SetPID(0.00001, 0, 0.0001);		
+		right1.SetPID(0.0001, 0.001, 0.001);
+		
+		right0.SetPIDType(PIDSourceType.kRate);
+		right1.SetPIDType(PIDSourceType.kRate);
+		
+		this.right0.MaintainSpeed(speed);
+		this.right1.MaintainSpeed(speed);
 	}
 		
 		
