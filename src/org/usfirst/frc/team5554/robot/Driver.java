@@ -60,14 +60,14 @@ public class Driver
 		this.right1.set(powerRight);
 	}
 	
-	public static void Drive(double speed)
+	public void Drive(double speed)
 	{
 		//here it will start the motors for the driver given a speed
 		//to drive an exact distance
 	}
 	
-	public static void Spin(double degrees)
-	{
+	public void Spin(double degrees)
+	{				
 		if(degrees > 0){
 			//then spin right
 		}else if(degrees < 0){
@@ -105,6 +105,7 @@ public class Driver
 		this.right0.GoSteady(speed);
 		this.right1.GoSteady(speed);
 	}
+	
 		
 		
 }

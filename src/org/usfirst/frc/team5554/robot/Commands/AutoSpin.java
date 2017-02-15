@@ -2,30 +2,26 @@ package org.usfirst.frc.team5554.robot.Commands;
 
 import org.usfirst.frc.team5554.robot.Driver;
 
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.InstantCommand;
 
 /**
  *
  */
-public class AutoSpin extends Command {
-
+public class AutoSpin extends InstantCommand {
 	
 	int degrees;
+	Driver driver;
 	
-    public AutoSpin(int _degrees) {
+    public AutoSpin(int _degrees, Driver _driver) {
     	super("Auto Spin");
     	degrees = _degrees;
+    	driver = _driver;
     }
 
-    @Override
+	@Override
     protected void initialize() {
-    	Driver.Spin(degrees);
-    	System.out.printf("Spinned %d degrees", degrees);
-    }
-
-    @Override
-    protected boolean isFinished() {
-        return false;
+    	//driver.Spin(degrees);
+    	//System.out.printf("Spinned %d degrees", degrees);
     }
 
 }

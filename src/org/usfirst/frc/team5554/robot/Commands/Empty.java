@@ -1,11 +1,11 @@
 package org.usfirst.frc.team5554.robot.Commands;
 
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.InstantCommand;
 
 /**
  *
  */
-public class Empty extends Command {
+public class Empty extends InstantCommand {
 
     public Empty() {
     	super("Empty");
@@ -14,10 +14,5 @@ public class Empty extends Command {
     protected void initialize() {
     	System.out.println("This is the empty command");
     }
-
-	@Override
-	protected boolean isFinished() {
-		return false;
-	}
-
+    
 }
