@@ -16,7 +16,7 @@ public class Motor extends Victor{
 	}
 	
 	
-	public void SetFeedbackDevice(Encoder enc)
+	public void SetFeedbackDevice(Encoder enc)          
 	{
 		this.encoder = enc;
 	}
@@ -43,7 +43,6 @@ public class Motor extends Victor{
 		{
 			System.out.println("PID controller created");
 			controller = new PIDController(p, i, d,f, encoder, this);
-			//controller.setTolerance(20);
 		}
 		else
 		{
