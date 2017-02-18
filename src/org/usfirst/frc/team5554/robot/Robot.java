@@ -33,7 +33,6 @@ public class Robot extends IterativeRobot {
 	/********************************************************************************************/
 	
 	
-	
 	@Override
 	public void robotInit() 
 	{
@@ -157,6 +156,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void testPeriodic() 
 	{
+		System.out.println("bbhtr");
 	}
 	
 }
