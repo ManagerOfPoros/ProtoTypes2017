@@ -156,7 +156,11 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void testPeriodic() 
 	{
-		System.out.println("bbhtr");
+		String[] shit = {"Or", "is", "Gay", "as", "fuck"};
+		for(int i=0;i<shit.length;i++){
+			System.out.println("Y R U so Gay "+shit[i]+"?");
+		}
+		
 	}
 	
 }
