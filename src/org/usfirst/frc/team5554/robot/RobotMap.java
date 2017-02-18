@@ -8,8 +8,8 @@ public enum RobotMap {;
       public final static int MOTOR_RIGHT_ONE = 2;
       public final static int MOTOR_RIGHT_TWO = 3;
       public final static int MOTOR_FEEDER = 5;
-      public final static int MOTOR_SCRUMBLE_PORT = 6;
-      public final static int MOTOR_SHOOT_ONE = 8;
+      public final static int MOTOR_SCRUMBLE_PORT = 5;
+      public final static int MOTOR_SHOOT_ONE = 6;
       public final static int MOTOR_SHOOT_TWO = 9;
 
 /*******************Controller Ports**************************************************************************/

@@ -2,6 +2,7 @@ package org.usfirst.frc.team5554.robot;
 
 import org.usfirst.frc.team5554.robot.Commands.*;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.CounterBase;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -36,6 +37,11 @@ public class Robot extends IterativeRobot {
 	PIDController picked;
 	SendableChooser<Command> autoChooser;
 	/********************************************************************************************/
+	private AnalogInput Gyro;
+	private double speed;
+	int delayCount;
+	private double lastSpeed;
+	
 	
 	Encoder encoder;
 	
@@ -50,7 +56,7 @@ public class Robot extends IterativeRobot {
 		
 		shooter = new Shooter(RobotMap.MOTOR_SHOOT_ONE,RobotMap.MOTOR_SHOOT_TWO, RobotMap.MOTOR_SCRUMBLE_PORT, encoder);
 		
-		feeder = new Feeder(RobotMap.MOTOR_FEEDER);
+		//feeder = new Feeder(RobotMap.MOTOR_FEEDER);
 		
 		//gears = new GearHolder(0,2,4);
 		//gears.SetLeds(true);
@@ -98,7 +104,7 @@ public class Robot extends IterativeRobot {
 	{
 		streamer.toSwitch = true;
 		encoder.reset();
-		shooter.maintainSpeed(19);	
+		//shooter.maintainSpeed(19);	
 	}
 
 	@Override
@@ -141,9 +147,31 @@ public class Robot extends IterativeRobot {
     	{
     		ignoreDecreaseSwitch = false;
     	}
+    		
+    		if(delayCount>0)
+    			delayCount--;
+    		else
+    			delayCount=0;
+    		
+    		if(joy.getRawButton(3) && delayCount==0){
+    			speed+=0.01;
+    			delayCount=20;
+    		}
+    		else
+    		if(joy.getRawButton(4) && delayCount == 0){
+    			speed-=0.01;
+    			delayCount=20;
+    		}
+    		
+    		if (joy.getRawButton(1))
+    			shooter.shoot(speed);
+    		else
+    			shooter.shoot(0);
+    		
+    		System.out.println("this is the speed"+speed);
     	
     	/****************************************** Scrumble *******************************************/
-    	//shooter.scrumble(xbox.getRawAxis(2));
+    	shooter.scrumble(xbox.getRawAxis(2));
     	
 		/****************************************** Feeder *********************************************/
     		

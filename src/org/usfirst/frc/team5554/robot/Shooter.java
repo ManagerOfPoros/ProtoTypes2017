@@ -57,7 +57,7 @@ public class Shooter
 	{
 		if (toScrumble > 0)
 		{
-			scrumble.set(-1);
+			scrumble.set(1);
 		}
 		else
 		{
