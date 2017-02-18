@@ -160,6 +160,7 @@ public class Robot extends IterativeRobot {
 		for(String poo : shit){
 			System.out.println("Y R U so Gay "+poo+"?");
 			System.out.println("Another syso");
+			System.out.println("another one");
 		}
 		
 	}
