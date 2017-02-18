@@ -47,7 +47,7 @@ public class Robot extends IterativeRobot {
 		//gears = new GearHolder(0,2,4);
 		//gears.SetLeds(true);
 		
-		System.out.println("MELTSER GAY");
+		//OMER GAY
 		
 		joy = new Joystick(RobotMap.DRIVER_JOYSTICK_PORT);
 		xbox = new Joystick(RobotMap.DRIVER_XBOXJOYSTICK_PORT);  
